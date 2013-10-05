@@ -12,8 +12,12 @@ group :test, :development do
 end
 
 # DB
-gem 'sqlite3'
-gem 'pg', '~> 0.16.0'
+group :test do
+  gem 'sqlite3'
+end
+group :production, :development do
+  gem 'pg', '~> 0.16.0'
+end
 gem 'taps'
 
 # JSON API
