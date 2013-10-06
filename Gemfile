@@ -64,3 +64,6 @@ group :development, :test do
   gem 'guard-bundler'
   gem 'guard-annotate'
 end
+
+# PAGINATE
+gem 'will_paginate'

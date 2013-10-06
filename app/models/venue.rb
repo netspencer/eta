@@ -13,6 +13,10 @@
 
 class Venue < ActiveRecord::Base
   has_many :events
-  
+
   attr_accessible :address, :latitude, :longitude, :name
+
+  geocoded_by :address
+
+  after_validation :geocode
 end

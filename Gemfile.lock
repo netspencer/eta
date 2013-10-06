@@ -229,3 +229,4 @@ DEPENDENCIES
   taps
   unicorn
   unicorn-rails
+  will_paginate
