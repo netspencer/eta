@@ -1,5 +1,5 @@
 class UsersController < RocketPants::Base
   def show
-    paginated User.find(params[:id]).locations
+    expose User.find(params[:id])
   end
 end

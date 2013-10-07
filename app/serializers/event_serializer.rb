@@ -1,7 +1,8 @@
 class EventSerializer < ActiveModel::Serializer
   attribute :id
   attribute :name
-  has_one :creator
+  attribute :created_at
+  has_one :creator, serializer: CreatorSerializer
   has_one :venue
-  has_many :attendees
+  has_many :attendees, serializer: AttendeeSerializer
 end

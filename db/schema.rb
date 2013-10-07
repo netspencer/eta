@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131006012540) do
+ActiveRecord::Schema.define(:version => 20131006074504) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(:version => 20131006012540) do
     t.integer  "user_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.float    "distance_from_last"
+    t.float    "distance_to_last"
     t.float    "time_since_last"
     t.float    "velocity_since_last"
+    t.float    "accuracy"
   end
 
   add_index "locations", ["user_id"], :name => "index_locations_on_user_id"

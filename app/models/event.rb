@@ -18,4 +18,20 @@ class Event < ActiveRecord::Base
   has_many :attendees, through: :memberships, source: :user, foreign_key: "user_id"
 
   attr_accessible :name
+
+  def latitude
+    self.venue.latitude
+  end
+
+  def longitude
+    self.venue.longitude
+  end
+
+  def to_coordinates
+    [self.latitude, self.longitude]
+  end
+
+  def distance_to(obj)
+    self.venue.distance_to(obj)
+  end
 end
