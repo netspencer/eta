@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Location Updator: <%= @id %></title>
+</head>
+<body>
+  <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript">
+    var user_id = <%= @id %>;
+
+    if (navigator.geolocation) {
+      // navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.watchPosition(success, error);
+    } else {
+      error('not supported');
+    }
+
+    function error(msg) {
+      console.log(msg);
+      $("body").append("<br>"+msg);
+    }
+
+    function success(pos) {
+      console.log(pos);
+      $.post("http://localhost:5000/1/users/"+user_id+"/locations", {location: {
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude,
+        accuracy: pos.coords.accuracy,
+        created_at: pos.timestamp
+      }}, function(data) {
+        console.log(data);
+        $("body").append("<br>");
+        $("body").append("Location set to: [" + pos.coords.latitude + ", " + pos.coords.longitude + "]");
+
+      }, "json");
+    }
+  </script>
+</body>
+</html>
